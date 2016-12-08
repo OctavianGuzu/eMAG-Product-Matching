@@ -3,9 +3,9 @@ package src;
 /**
  * Created by vladimir on 09.12.2016.
  */
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+//import java.io.BufferedReader;
+//import java.io.FileReader;
+//import java.io.IOException;
 
 public class Similarity {
 
@@ -46,10 +46,10 @@ public class Similarity {
         return costs[s2.length()];
     }
 
-    public static void printSimilarity(String s, String t) {
-        System.out.println(String.format(
-                "%.3f is the similarity between \"%s\" and \"%s\"", similarity(s, t), s, t));
-    }
+//    public static void printSimilarity(String s, String t) {
+//        System.out.println(String.format(
+//                "%.3f is the similarity between \"%s\" and \"%s\"", similarity(s, t), s, t));
+//    }
 
 //    public static void main(String[] args) {
 //        try (BufferedReader br = new BufferedReader(new FileReader("duplicate.csv"))) {
