@@ -1,6 +1,7 @@
 package src;
 
 import java.io.IOException;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 /**
@@ -8,6 +9,7 @@ import java.util.Vector;
  */
 public class Find_Duplicates {
     Vector duplicates=new Vector();
+    Vector reviewed_duplicates=new Vector();
 
     public static void main(String args[]) throws IOException {
         //System.out.println(Similarity.similarity("Ana are mere","Anna arrre pere")*100);
@@ -20,12 +22,12 @@ public class Find_Duplicates {
         String check=new String();
         String buildEntry=new String();
         int ok;
-        for(int i=0;i<obj.products.size()/4;i++) {
+        for(int i=0;i<obj.products.size()/8;i++) {
             check=(String) obj.products.get(i);
             buildEntry=obj.IDs.get(i) + ";" + check + " -- ";
             ok=0;
-            for(int j=i;j<obj.products.size()/4;j++) {
-                if(i!=j && Similarity.similarity(check,(String) obj.products.get(j)) > 0.6) {
+            for(int j=i;j<obj.products.size()/8;j++) {
+                if(i!=j && LetterPairSimilarity.compareStrings(check,(String) obj.products.get(j)) > 0.6) {
                     buildEntry=buildEntry+obj.IDs.get(j) + ";" + obj.products.get(j) + " -- ";
                     ok=1;
                 }
@@ -34,6 +36,7 @@ public class Find_Duplicates {
             if(ok==1)
                 duplicates.add(buildEntry+"\n");
         }
+
         System.out.println(duplicates);
     }
 }
