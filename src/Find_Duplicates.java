@@ -7,7 +7,7 @@ import java.util.Vector;
 /**
  * Created by octavian.guzu on 12/9/2016.
  */
-public class Find_Duplicates {
+public class Find_Duplicates { // DEPRECATED
     Vector duplicates=new Vector();
     Vector reviewed_duplicates=new Vector();
 
