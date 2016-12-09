@@ -60,6 +60,7 @@ public class LetterPairSimilarity {
                 "Storcator de fructe Philips Viva Collection HR1855/80"));
 
         System.out.println(compareStrings("France",	"Republic of Cuba"));
+        System.out.println("");
 
     }
 }

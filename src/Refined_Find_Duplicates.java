@@ -20,19 +20,22 @@ public class Refined_Find_Duplicates {
 
     public void find_Duplicates() throws IOException {
         Duplicate_products obj=new Duplicate_products("produse_de_adaugat.csv");
+        PrintWriter finalOutput = new PrintWriter(new FileWriter("produse_duplicate_de_adaugat.csv"));
         String check=new String();
         String buildEntry=new String();
+        String fileLine=new String();
         StringTokenizer firstProduct, secondProduct;
         Vector commas1=new Vector();
         String productName1=new String();
         Vector commas2=new Vector();
         String productName2=new String();
         int ok=0;
-        for(int i=0;i<obj.products.size();i++) {
+        for(int i=0;i<obj.products.size()/8;i++) {
             ok=0;
             commas1=new Vector();
             check=(String) obj.products.get(i);
             buildEntry=obj.IDs.get(i) + ";" + check + " -- ";
+            fileLine=(String) obj.IDs.get(i);
             firstProduct=new StringTokenizer(check,",");
             productName1=firstProduct.nextToken();
             while(firstProduct.hasMoreTokens()) {
@@ -40,7 +43,7 @@ public class Refined_Find_Duplicates {
             }
             //System.out.println(commas);
 
-            for(int j=i;j<obj.products.size();j++) {
+            for(int j=i;j<obj.products.size()/8;j++) {
                 commas2=new Vector();
                 check=(String) obj.products.get(j);
                 secondProduct=new StringTokenizer(check, ",");
@@ -61,13 +64,15 @@ public class Refined_Find_Duplicates {
                                 if(productName1.toLowerCase().contains("barbati") || productName2.toLowerCase().contains("barbati"))
                                     continue;
                                 buildEntry=buildEntry+obj.IDs.get(j) + ";" + check + " -- ";
+                                fileLine= fileLine +", " + obj.IDs.get(j);
                                 ok=1;
                                 continue;
                             }
                         }
-                        if(commas1.toString().toLowerCase().contains("GB") || commas2.toString().toLowerCase().contains("GB"))
+                        if(commas1.toString().toLowerCase().contains("gb") || commas2.toString().toLowerCase().contains("gb"))
                             continue;
                         buildEntry=buildEntry+obj.IDs.get(j) + ";" + check + " -- ";
+                        fileLine= fileLine +", " + obj.IDs.get(j);
                         ok=1;
                     }
                 }
@@ -75,6 +80,7 @@ public class Refined_Find_Duplicates {
             System.out.println(i+ "\n");
             if(ok==1) {
                 duplicates.add(buildEntry+"/////"+"\n");
+                finalOutput.println(fileLine);
             }
         }
 
@@ -84,5 +90,6 @@ public class Refined_Find_Duplicates {
         out.println(duplicates);
         out.flush();
         out.close();
+        finalOutput.close();
     }
 }
