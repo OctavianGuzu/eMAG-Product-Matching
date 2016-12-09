@@ -16,12 +16,11 @@ public class Duplicate_products {
     Vector products=new Vector();
     Vector IDs=new Vector();
 
-    public static void main(String args[]) throws IOException {
-        Duplicate_products obj=new Duplicate_products();
-        obj.readFile("produse_de_adaugat.csv");
-    }
+    //public static void main(String args[]) throws IOException {
+        //Duplicate_products obj=new Duplicate_products("produse_de_adaugat.csv");
+    //}
 
-    public void readFile(String file) throws IOException {
+    public  Duplicate_products(String file) throws IOException {
         BufferedReader br=new BufferedReader(new FileReader(file));
         StringTokenizer stringToken;
         String line;
@@ -34,6 +33,6 @@ public class Duplicate_products {
             products.add(line);
             line=br.readLine();
         }
-        System.out.println(products);
+       // System.out.println(IDs);
     }
 }
