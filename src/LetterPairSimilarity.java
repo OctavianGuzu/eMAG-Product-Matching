@@ -43,7 +43,9 @@ public class LetterPairSimilarity {
     }
 
     private static String[] letterPairs(String str) {
-        int numPairs = str.length()-1;
+        int numPairs=0;
+        if(str.length() > 0)
+            numPairs=str.length()-1;
         String[] pairs = new String[numPairs];
         for (int i=0; i<numPairs; i++) {
             pairs[i] = str.substring(i,i+2);

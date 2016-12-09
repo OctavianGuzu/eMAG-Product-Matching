@@ -36,6 +36,11 @@ public class Find_Duplicates {
             if(ok==1)
                 duplicates.add(buildEntry+"\n");
         }
+        for(int i=0;i<duplicates.size();i++) {
+            if(((String)duplicates.get(i)).contains("XL")) {
+                duplicates.remove(i);
+            }
+        }
 
         System.out.println(duplicates);
     }
