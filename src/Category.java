@@ -30,7 +30,7 @@ public class Category {
     }
 
     public static void main(String args[]) throws IOException {
-        Category obj=new Category("categorii-engleza.en.ro.txt", "categorii.csv");
+        Category obj=new Category("categorii_folosite_ro.txt", "categorii_folosite_en.txt");
         obj.find_Category();
     }
 
@@ -38,6 +38,12 @@ public class Category {
         Duplicate_products obj=new Duplicate_products("produse_de_adaugat.csv");
         for(int i=0;i<obj.products.size();i++) {
             String currentProduct=(String) obj.products.get(i);
+            if(currentProduct.contains("__"))
+                continue;
+            if(currentProduct.contains(" - ")) {
+                productsCategories.add(obj.IDs.get(i) + ";" + currentProduct + ";" + "Carti" + "\n");
+                continue;
+            }
             double max=LetterPairSimilarity.compareStrings(currentProduct,(String) categoriesRO.get(0));
             String currentCategory=(String) categoriesRO.get(0);
             int index=0;
