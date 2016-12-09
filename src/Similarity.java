@@ -67,7 +67,7 @@ public class Similarity {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        System.out.println("aaabb ---> ccaaa" + " seamana " + (int)(similarity("aaabb", "ccaaa") * 100) + "%");
+        System.out.println("aaabb ---> aaacc" + " seamana " + (int)(similarity("aaabb", "aaacc") * 100) + "%");
     }
 
 }
