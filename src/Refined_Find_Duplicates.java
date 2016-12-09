@@ -28,7 +28,7 @@ public class Refined_Find_Duplicates {
         Vector commas2=new Vector();
         String productName2=new String();
         int ok=0;
-        for(int i=0;i<obj.products.size();i++) {
+        for(int i=0;i<obj.products.size()/8;i++) {
             ok=0;
             commas1=new Vector();
             check=(String) obj.products.get(i);
@@ -40,7 +40,7 @@ public class Refined_Find_Duplicates {
             }
             //System.out.println(commas);
 
-            for(int j=i;j<obj.products.size();j++) {
+            for(int j=i;j<obj.products.size()/8;j++) {
                 commas2=new Vector();
                 check=(String) obj.products.get(j);
                 secondProduct=new StringTokenizer(check, ",");
@@ -49,19 +49,22 @@ public class Refined_Find_Duplicates {
                     commas2.add(secondProduct.nextToken());
                 }
                 if(i!=j) {
-                    if(Check_Similar.noWords(productName1) &&
-                    Check_Similar.noWords(productName2) && Check_Similar.compareTHEM(productName1,productName2) == 0.9) {
+                    if(LetterPairSimilarity.compareStrings(productName1, productName2) > 0.64) {
                         if(commas1.size()==commas2.size()) {
                             if(commas1.size()==2) {
                                 if (!commas1.get(0).equals(commas2.get(0)))
                                     continue;
                                 if(!commas1.get(1).equals(commas2.get(1)))
                                     continue;
+                                if(productName1.toLowerCase().contains("barbati") || productName2.toLowerCase().contains("barbati"))
+                                    continue;
                                 buildEntry=buildEntry+obj.IDs.get(j) + ";" + check + " -- ";
                                 ok=1;
                                 continue;
                             }
                         }
+                        if(commas1.toString().toLowerCase().contains("GB") || commas2.toString().toLowerCase().contains("GB"))
+                            continue;
                         buildEntry=buildEntry+obj.IDs.get(j) + ";" + check + " -- ";
                         ok=1;
                     }
