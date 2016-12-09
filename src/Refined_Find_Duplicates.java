@@ -30,7 +30,7 @@ public class Refined_Find_Duplicates {
         Vector commas2=new Vector();
         String productName2=new String();
         int ok=0;
-        for(int i=0;i<obj.products.size()/8;i++) {
+        for(int i=0;i<obj.products.size();i++) {
             ok=0;
             commas1=new Vector();
             check=(String) obj.products.get(i);
@@ -43,7 +43,7 @@ public class Refined_Find_Duplicates {
             }
             //System.out.println(commas);
 
-            for(int j=i;j<obj.products.size()/8;j++) {
+            for(int j=i;j<obj.products.size();j++) {
                 commas2=new Vector();
                 check=(String) obj.products.get(j);
                 secondProduct=new StringTokenizer(check, ",");
