@@ -1,9 +1,6 @@
 package src;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Vector;
 
 /**
@@ -36,12 +33,15 @@ public class Category {
 
     public void find_Category() throws IOException {
         Duplicate_products obj=new Duplicate_products("produse_de_adaugat.csv");
+        PrintWriter out = new PrintWriter(new FileWriter("Produse_categorii_mine.csv"));
         for(int i=0;i<obj.products.size();i++) {
             String currentProduct=(String) obj.products.get(i);
             if(currentProduct.contains("__"))
                 continue;
             if(currentProduct.contains(" - ")) {
-                productsCategories.add(obj.IDs.get(i) + ";" + currentProduct + ";" + "Carti" + "\n");
+                //productsCategories.add(obj.IDs.get(i) + ";" + currentProduct + ";" + "Carti" + "\n");
+                out.println(obj.IDs.get(i) + ";" + currentProduct + ";" + "Carti");
+                //out.println(currentProduct + ";" + "Carti");
                 continue;
             }
             double max=LetterPairSimilarity.compareStrings(currentProduct,(String) categoriesRO.get(0));
@@ -56,10 +56,15 @@ public class Category {
                     index=j;
                 }
             }
-            productsCategories.add(obj.IDs.get(i)+ ";" + currentProduct + ";" + categoriesEN.get(index)+"\n");
+            //productsCategories.add(obj.IDs.get(i)+ ";" + currentProduct + ";" + categoriesEN.get(index)+"\n");
+            out.println(obj.IDs.get(i)+";"+currentProduct+";"+categoriesEN.get(index));
+            //out.println(currentProduct+";"+categoriesEN.get(index));
 
         }
-        System.out.println(productsCategories);
+
+        //System.out.println(productsCategories);
+        out.flush();
+        out.close();
     }
 
 }
