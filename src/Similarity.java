@@ -51,7 +51,7 @@ public class Similarity {
 //                "%.3f is the similarity between \"%s\" and \"%s\"", similarity(s, t), s, t));
 //    }
 
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 //        try (BufferedReader br = new BufferedReader(new FileReader("duplicate.csv"))) {
 //
 //            String sCurrentLine;
@@ -67,7 +67,8 @@ public class Similarity {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-//    }
+        System.out.println("aaabb ---> ccaaa" + " seamana " + (int)(similarity("aaabb", "ccaaa") * 100) + "%");
+    }
 
 }
 
