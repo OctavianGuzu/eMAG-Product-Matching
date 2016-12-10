@@ -12,10 +12,10 @@ public class LetterPairSimilarity {
         ArrayList pairs2 = wordLetterPairs(str2.toUpperCase());
         int intersection = 0;
         int union = pairs1.size() + pairs2.size();
-        for (int i=0; i<pairs1.size(); i++) {
-            Object pair1=pairs1.get(i);
-            for(int j=0; j<pairs2.size(); j++) {
-                Object pair2=pairs2.get(j);
+        for (int i = 0; i < pairs1.size(); i++) {
+            Object pair1 = pairs1.get(i);
+            for (int j = 0; j < pairs2.size(); j++) {
+                Object pair2 = pairs2.get(j);
                 if (pair1.equals(pair2)) {
                     intersection++;
                     pairs2.remove(j);
@@ -23,19 +23,19 @@ public class LetterPairSimilarity {
                 }
             }
         }
-        return (2.0*intersection)/union;
+        return (2.0 * intersection) / union;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     private static ArrayList wordLetterPairs(String str) {
         ArrayList allPairs = new ArrayList();
         // Tokenize the string and put the tokens/words into an array
         String[] words = str.split("\\s");
         // For each word
-        for (int w=0; w < words.length; w++) {
+        for (int w = 0; w < words.length; w++) {
             // Find the pairs of characters
             String[] pairsInWord = letterPairs(words[w]);
-            for (int p=0; p < pairsInWord.length; p++) {
+            for (int p = 0; p < pairsInWord.length; p++) {
                 allPairs.add(pairsInWord[p]);
             }
         }
@@ -43,12 +43,12 @@ public class LetterPairSimilarity {
     }
 
     private static String[] letterPairs(String str) {
-        int numPairs=0;
-        if(str.length() > 0)
-            numPairs=str.length()-1;
+        int numPairs = 0;
+        if (str.length() > 0)
+            numPairs = str.length() - 1;
         String[] pairs = new String[numPairs];
-        for (int i=0; i<numPairs; i++) {
-            pairs[i] = str.substring(i,i+2);
+        for (int i = 0; i < numPairs; i++) {
+            pairs[i] = str.substring(i, i + 2);
         }
         return pairs;
     }
@@ -59,7 +59,7 @@ public class LetterPairSimilarity {
                         + "Recipient pulpa 1.2 l, 1 Viteza, Tub de alimentare 75 mm, Alb",
                 "Storcator de fructe Philips Viva Collection HR1855/80"));
 
-        System.out.println(compareStrings("France",	"Republic of Cuba"));
+        System.out.println(compareStrings("France", "Republic of Cuba"));
         System.out.println("");
 
     }
