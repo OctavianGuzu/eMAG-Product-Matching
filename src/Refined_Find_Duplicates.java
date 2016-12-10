@@ -52,7 +52,7 @@ public class Refined_Find_Duplicates {
                     commas2.add(secondProduct.nextToken());
                 }
                 if (i != j) {
-                    if (LetterPairSimilarity.compareStrings(productName1, productName2) > 0.64) {
+                    if (((String) obj.products.get(i)).equals((String) obj.products.get(j)) && !((String) obj.IDs.get(i)).equals((String) obj.IDs.get(j))) {
                         if (productName1.contains("__") || productName2.contains("__"))
                             continue;
                         if (commas1.size() == commas2.size()) {
@@ -64,7 +64,7 @@ public class Refined_Find_Duplicates {
                                 if (productName1.toLowerCase().contains("barbati") || productName2.toLowerCase().contains("barbati"))
                                     continue;
                                 buildEntry = buildEntry + obj.IDs.get(j) + ";" + check + " -- ";
-                                fileLine = fileLine + ", " + obj.IDs.get(j);
+                                fileLine = fileLine + ";" + obj.IDs.get(j);
                                 ok = 1;
                                 continue;
                             }
@@ -72,7 +72,7 @@ public class Refined_Find_Duplicates {
                         if (commas1.toString().toLowerCase().contains("gb") || commas2.toString().toLowerCase().contains("gb"))
                             continue;
                         buildEntry = buildEntry + obj.IDs.get(j) + ";" + check + " -- ";
-                        fileLine = fileLine + ", " + obj.IDs.get(j);
+                        fileLine = fileLine + ";" + obj.IDs.get(j);
                         ok = 1;
                     }
                 }
